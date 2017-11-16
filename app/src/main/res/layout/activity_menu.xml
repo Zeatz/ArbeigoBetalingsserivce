@@ -45,4 +45,89 @@
         android:text="Min bruger"
         android:textColor="@android:color/black" />
 
+    <ImageView
+        android:id="@+id/betalArbeigo"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/ArbeigoUser"
+        android:layout_alignStart="@+id/ArbeigoUser"
+        android:layout_below="@+id/ArbeigoUser"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/card" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_alignTop="@+id/betalArbeigo"
+        android:background="@color/white"
+        android:text="Betal for opgaver"
+        android:textColor="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/MineOpgaver"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/betalArbeigo"
+        android:layout_alignStart="@+id/betalArbeigo"
+        android:layout_below="@+id/betalArbeigo"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/document" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignStart="@+id/button1"
+        android:layout_alignTop="@+id/MineOpgaver"
+        android:background="@color/white"
+        android:text="Mine Opgaver"
+        android:textColor="@android:color/black"
+        android:onClick="onClickMineOpgaver"/>
+
+    <ImageView
+        android:id="@+id/fåEtTilbud"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/MineOpgaver"
+        android:layout_alignStart="@+id/MineOpgaver"
+        android:layout_below="@+id/MineOpgaver"
+        android:layout_marginTop="27dp"
+        android:src="@drawable/tilbud" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_alignTop="@+id/fåEtTilbud"
+        android:background="@color/white"
+        android:text="Få et tilbud"
+        android:textColor="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/tættestePåMig"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/fåEtTilbud"
+        android:layout_alignStart="@+id/fåEtTilbud"
+        android:layout_below="@+id/fåEtTilbud"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/map" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:layout_alignTop="@+id/tættestePåMig"
+        android:background="@color/white"
+        android:text="Tætteste på mig"
+        android:textColor="@android:color/black" />
+
 </RelativeLayout>
