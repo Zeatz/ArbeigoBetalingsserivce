@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mineOpgaverActivity"></activity>
+        <activity android:name=".mineOpgaverActivity" />
+        <activity android:name=".mobilePayActivity"></activity>
     </application>
 
 </manifest>
