@@ -23,18 +23,29 @@
         android:onClick="onClickBetal"
         />
 
-    <ToggleButton
+    <Button
+        android:id="@+id/buttonON"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/payButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/payButton"
-        android:layout_marginLeft="52dp"
-        android:layout_marginStart="52dp"
-        android:id="@+id/toggleButton"
-        android:text="ToggleButton"
-        android:textOn="BLUE ON"
-        android:textOff="BLUE OFF"
-        android:checked="false"/>
+        android:layout_marginBottom="61dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:text="ON" />
+
+    <Button
+
+        android:id="@+id/buttonOFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonON"
+        android:layout_alignBottom="@+id/buttonON"
+        android:layout_alignEnd="@+id/payButton"
+        android:layout_alignRight="@+id/payButton"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="off" />
 
 </RelativeLayout>

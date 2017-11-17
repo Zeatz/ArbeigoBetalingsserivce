@@ -1,34 +1,28 @@
 package com.example.nicolai.arbeigobetalingsserivce;
 
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ToggleButton;
-
+import android.widget.Toast;
 import java.math.BigDecimal;
-
 import dk.danskebank.mobilepay.sdk.Country;
 import dk.danskebank.mobilepay.sdk.MobilePay;
-import dk.danskebank.mobilepay.sdk.ResultCallback;
-import dk.danskebank.mobilepay.sdk.model.FailureResult;
 import dk.danskebank.mobilepay.sdk.model.Payment;
-import dk.danskebank.mobilepay.sdk.model.SuccessResult;
+
 
 public class mobilePayActivity extends AppCompatActivity {
 
 
-    public static int REQUEST_BLUETOOTH = 1;
-    private BluetoothAdapter BTAdapter;
+    Button btnON, btnOFF;
+    BluetoothAdapter myBluetoothAdapter;
+
+    Intent btEnablingIntent;
+    int requestCodeForEnable;
+    int MOBILEPAY_PAYMENT_REQUEST_CODE = 1337;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +30,55 @@ public class mobilePayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mobile_pay);
         MobilePay.getInstance().init("APPDK0000000000", Country.DENMARK);
 
-        BTAdapter = BluetoothAdapter.getDefaultAdapter();
+        btnON=(Button) findViewById(R.id.buttonON);
+        btnOFF=(Button) findViewById(R.id.buttonOFF);
 
-        if (!BTAdapter.isEnabled()) {
-            Intent enableBT = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBT, REQUEST_BLUETOOTH);
-        }
+        myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        btEnablingIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        requestCodeForEnable = 1;
+
+        bluetoothOnMethod();
+        bluetoothOFFMethod();
 
     }
 
-    int MOBILEPAY_PAYMENT_REQUEST_CODE = 1337;
+
+    private void bluetoothOFFMethod() {
+        btnOFF.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if (myBluetoothAdapter.isEnabled()){
+                    myBluetoothAdapter.disable();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == requestCodeForEnable){
+            if (resultCode==RESULT_OK){
+                Toast.makeText(getApplicationContext(), "Bluetooth is Enabled", Toast.LENGTH_LONG).show();
+            }else if (resultCode==RESULT_CANCELED){
+                Toast.makeText(getApplicationContext(), "Bluetooth cancelled", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void bluetoothOnMethod() {
+        btnON.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if (myBluetoothAdapter==null){
+                    Toast.makeText(getApplicationContext(), "Bluetooth does not support on this device", Toast.LENGTH_LONG).show();
+                }else {
+                    if (!myBluetoothAdapter.isEnabled()){
+                        startActivityForResult(btEnablingIntent, requestCodeForEnable);
+                    }
+                }
+            }
+        });
+    }
 
 
     public void onClickBetal(View view){
@@ -71,27 +104,27 @@ public class mobilePayActivity extends AppCompatActivity {
             }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == MOBILEPAY_PAYMENT_REQUEST_CODE) {
+  //  @Override
+   // public void onActivityResult(int requestCode, int resultCode, Intent data) {
+     //   super.onActivityResult(requestCode, resultCode, data);
+       // if (requestCode == MOBILEPAY_PAYMENT_REQUEST_CODE) {
             // The request code matches our MobilePay Intent
-            MobilePay.getInstance().handleResult(resultCode, data, new ResultCallback() {
-                @Override
-                public void onSuccess(SuccessResult result) {
+         //   MobilePay.getInstance().handleResult(resultCode, data, new ResultCallback() {
+           //     @Override
+             //   public void onSuccess(SuccessResult result) {
                     // The payment succeeded - you can deliver the product.
-                }
-                @Override
-                public void onFailure(FailureResult result) {
+               // }
+                //@Override
+                //public void onFailure(FailureResult result) {
                     // The payment failed - show an appropriate error message to the user. Consult the MobilePay class documentation for possible error codes.
-                }
-                @Override
-                public void onCancel() {
+                //}
+                //@Override
+                //public void onCancel() {
                     // The payment was cancelled.
-                }
-            });
-        }
-    }
+               // }
+            //});
+      //  }
+    //}
 
 
 
