@@ -14,7 +14,7 @@
         android:layout_below="@+id/spinnerOpgaver"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="59dp"
-        android:entries="@array/Firmaer"></Spinner>
+        android:entries="@array/Firmaer"/>
 
     <Spinner
         android:id="@+id/spinnerOpgaver"
@@ -24,7 +24,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/spinnerFirma"
         android:layout_marginTop="139dp"
-        android:entries="@array/Opgaver"></Spinner>
+        android:entries="@array/Opgaver"/>
 
     <Button
         android:id="@+id/buttonTilføjFirma"

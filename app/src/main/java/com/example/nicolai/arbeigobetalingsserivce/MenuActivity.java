@@ -23,22 +23,22 @@ public class  MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opret_opgave);
 
-        BTAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (BTAdapter == null) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Not compatible")
-                    .setMessage("Your phone does not support Bluetooth")
-                    .setPositiveButton("Exit", new DialogInterface.OnClickListener()
-                    {public void onClick(DialogInterface dialog, int which) {
-                        System.exit(0);
-                    }
-                    }).setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-        }
-        if (!BTAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-        }
+       // BTAdapter = BluetoothAdapter.getDefaultAdapter();
+       // if (BTAdapter == null) {
+        //     new AlertDialog.Builder(this)
+        //          .setTitle("Not compatible")
+        //          .setMessage("Your phone does not support Bluetooth")
+        //          .setPositiveButton("Exit", new DialogInterface.OnClickListener()
+        //          {public void onClick(DialogInterface dialog, int which) {
+        ////              System.exit(0);
+        //        }
+        //          }).setIcon(android.R.drawable.ic_dialog_alert)
+        //          .show();
+        //}
+        //if (!BTAdapter.isEnabled()) {
+        //  Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        //  startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        //}
 
         if (!isConnected(MenuActivity.this)) buildDialog(MenuActivity.this).show();
         else{
