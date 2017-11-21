@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">ArbeigoBetalingsserivce</string>
+
+    <array name="Firmaer">
+        <item>Hansens Byg A/S</item>
+        <item>Jensens Byg A/S</item>
+        <item>Larsens Byg A/S</item>
+        <item>Johansens Byg A/S</item>
+    </array>
+
+    <array name="Opgaver">
+        <item>Vindueskift</item>
+        <item>Lægge fliser</item>
+        <item>Rense tagrender</item>
+        <item>Sætte nyt køkken i</item>
+    </array>
 </resources>

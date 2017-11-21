@@ -1,7 +1,11 @@
 package com.example.nicolai.arbeigobetalingsserivce;
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
+import android.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,11 +21,9 @@ public class mobilePayActivity extends AppCompatActivity {
 
 
     Button btnON, btnOFF;
-    BluetoothAdapter myBluetoothAdapter;
-
-    Intent btEnablingIntent;
-    int requestCodeForEnable;
+    int REQUEST_BLUETOOTH = 1;
     int MOBILEPAY_PAYMENT_REQUEST_CODE = 1337;
+    BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
 
 
     @Override
@@ -33,52 +35,33 @@ public class mobilePayActivity extends AppCompatActivity {
         btnON=(Button) findViewById(R.id.buttonON);
         btnOFF=(Button) findViewById(R.id.buttonOFF);
 
-        myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        btEnablingIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-        requestCodeForEnable = 1;
+        BTAdapter = BluetoothAdapter.getDefaultAdapter();
+        // Phone does not support Bluetooth so let the user know and exit.
+        if (BTAdapter == null) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Not compatible")
+                    .setMessage("Your phone does not support Bluetooth")
+                    .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            System.exit(0);
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
 
-        bluetoothOnMethod();
-        bluetoothOFFMethod();
-
-    }
-
-
-    private void bluetoothOFFMethod() {
-        btnOFF.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if (myBluetoothAdapter.isEnabled()){
-                    myBluetoothAdapter.disable();
-                }
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == requestCodeForEnable){
-            if (resultCode==RESULT_OK){
-                Toast.makeText(getApplicationContext(), "Bluetooth is Enabled", Toast.LENGTH_LONG).show();
-            }else if (resultCode==RESULT_CANCELED){
-                Toast.makeText(getApplicationContext(), "Bluetooth cancelled", Toast.LENGTH_LONG).show();
-            }
+        if (!BTAdapter.isEnabled()) {
+            Intent enableBT = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBT, REQUEST_BLUETOOTH);
         }
     }
 
-    private void bluetoothOnMethod() {
-        btnON.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if (myBluetoothAdapter==null){
-                    Toast.makeText(getApplicationContext(), "Bluetooth does not support on this device", Toast.LENGTH_LONG).show();
-                }else {
-                    if (!myBluetoothAdapter.isEnabled()){
-                        startActivityForResult(btEnablingIntent, requestCodeForEnable);
-                    }
-                }
-            }
-        });
-    }
+
+
+
+
+
+
 
 
     public void onClickBetal(View view){

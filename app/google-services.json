@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "306273852436",
+    "firebase_url": "https://arbeigobetalingsserivce.firebaseio.com",
+    "project_id": "arbeigobetalingsserivce",
+    "storage_bucket": "arbeigobetalingsserivce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306273852436:android:b481a4ec6c6cc131",
+        "android_client_info": {
+          "package_name": "com.example.nicolai.arbeigobetalingsserivce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306273852436-k59qlkk51gq4knd690n608itv1d8orf7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nicolai.arbeigobetalingsserivce",
+            "certificate_hash": "58d27a02fd0c3a5daece5d0c9c6785e696b274fb"
+          }
+        },
+        {
+          "client_id": "306273852436-q8rccrjt3vplqkq77i2s2p8ultaqlkhs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuAm9zMv-8Zy95txmbMWWGL_681AI2OQw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306273852436-q8rccrjt3vplqkq77i2s2p8ultaqlkhs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
