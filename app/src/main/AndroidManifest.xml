@@ -17,10 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".MenuActivity" />
         <activity android:name=".mineOpgaverActivity" />
-        <activity android:name=".mobilePayActivity" />
         <activity android:name=".opretOpgaveActivity">
+        </activity>
+        <activity android:name=".opgaveInfoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

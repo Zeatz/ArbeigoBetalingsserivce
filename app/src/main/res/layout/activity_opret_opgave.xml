@@ -6,32 +6,74 @@
     android:layout_height="match_parent"
     tools:context="com.example.nicolai.arbeigobetalingsserivce.opretOpgaveActivity">
 
+    <ImageView
+        android:id="@+id/ArbeigoHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="119dp"
+        android:src="@drawable/header"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageButton
+        android:id="@+id/buttonTilbage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:src="@drawable/tilbageknap"
+        android:onClick="onClickReturnToMineOpgaver"/>
 
     <Spinner
         android:id="@+id/spinnerFirma"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinnerOpgaver"
+        android:layout_alignTop="@+id/spinnerOpgaver"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="59dp"
-        android:entries="@array/Firmaer"/>
+        android:entries="@array/Firmaer" />
 
     <Spinner
         android:id="@+id/spinnerOpgaver"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/spinnerFirma"
-        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/spinnerFirma"
-        android:layout_marginTop="139dp"
-        android:entries="@array/Opgaver"/>
+        android:layout_below="@+id/ArbeigoHeader"
+        android:layout_marginTop="53dp"
+        android:entries="@array/Opgaver" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttonTilføjFirma"
+        android:layout_alignRight="@+id/buttonTilføjFirma"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Tilføj beskrivelse"
+        android:textColor="@color/orange"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/beskrivelse"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_above="@+id/buttonTilføjFirma"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp" />
 
     <Button
         android:id="@+id/buttonTilføjFirma"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Bestil Opgave" />
+        android:layout_marginBottom="99dp"
+        android:text="Bestil Opgave"
+        android:background="@color/lightGreen"/>
 
 </RelativeLayout>
