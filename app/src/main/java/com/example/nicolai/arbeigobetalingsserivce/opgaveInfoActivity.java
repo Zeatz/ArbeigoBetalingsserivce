@@ -5,10 +5,20 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import dk.danskebank.mobilepay.sdk.Country;
 import dk.danskebank.mobilepay.sdk.MobilePay;
@@ -16,18 +26,82 @@ import dk.danskebank.mobilepay.sdk.model.Payment;
 
 public class opgaveInfoActivity extends AppCompatActivity {
 
+    //Firebase
+    DatabaseReference mDatabase;
+
+    //Android Layout
+    Button btnTilføj;
+    EditText editTextMaterialer;
+    ListView listView;
     TextView opgaveNavn;
+
+    //Mobile pay
     int MOBILEPAY_PAYMENT_REQUEST_CODE = 1337;
+
+    //Array
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opgave_info);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Materialer");
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+
         MobilePay.getInstance().init("APPDK0000000000", Country.DENMARK);
 
         opgaveNavn = (TextView) findViewById(R.id.opgaveNavn);
         opgaveNavn.setTypeface(Typeface.SANS_SERIF);
+        btnTilføj = (Button) findViewById(R.id.TilføjMaterialer);
+        editTextMaterialer = (EditText) findViewById(R.id.editTextMaterialer);
+        listView = (ListView) findViewById(R.id.listView);
+
+        listView.setAdapter(adapter);
+
+        btnTilføj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mDatabase.push().setValue(editTextMaterialer.getText().toString().trim());
+            }
+        });
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                String string = dataSnapshot.getValue(String.class);
+
+                arrayList.add(string);
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 
     }
 
@@ -39,22 +113,22 @@ public class opgaveInfoActivity extends AppCompatActivity {
 
     public void onClickBetal(View view){
 
-        // Check if the MobilePay app is installed on the device.
+        // Checker hvis mobilePay er installeret på enheden
         boolean isMobilePayInstalled = MobilePay.getInstance().isMobilePayInstalled(getApplicationContext());
 
         if (isMobilePayInstalled) {
-            // MobilePay is present on the system. Create a Payment object.
+            // MobilePay er på systemet, lav et betalingsobject.
             Payment payment = new Payment();
             payment.setProductPrice(new BigDecimal(10.0));
             payment.setOrderId("86715c57-8840-4a6f-af5f-07ee89107ece");
 
-            // Create a payment Intent using the Payment object from above.
+            // Laver betalings Intent, ved at bruge objectet lavet ovenover.
             Intent paymentIntent = MobilePay.getInstance().createPaymentIntent(payment);
 
-            // We now jump to MobilePay to complete the transaction. Start MobilePay and wait for the result using an unique result code of your choice.
+            // Starter mobilepay for at gøre transaktionen færdig. Ved brug af en uniq resultcode, man selv laver.
             startActivityForResult(paymentIntent, MOBILEPAY_PAYMENT_REQUEST_CODE);
         } else {
-            // MobilePay is not installed. Use the SDK to create an Intent to take the user to Google Play and download MobilePay.
+            // MobilePay er ikke installeret. Burger SDK til at lave en intent til google play for at downloade mobilepay.
             Intent intent = MobilePay.getInstance().createDownloadMobilePayIntent(getApplicationContext());
             startActivity(intent);
         }

@@ -34,7 +34,8 @@
         android:layout_alignTop="@+id/opgaveNavn"
         android:layout_toEndOf="@+id/opgaveNavn"
         android:layout_toRightOf="@+id/opgaveNavn"
-        android:src="@drawable/update" />
+        android:src="@drawable/update"
+        android:id="@+id/imageButton" />
 
     <TextView
         android:id="@+id/opgaveNavn"
@@ -47,23 +48,248 @@
         android:text="Opgave Navn"
         android:textSize="40sp" />
 
-    <Button
-        style="@style/ButtonStyle"
-        android:id="@+id/payButton"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="41dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginRight="38dp"
-        android:background="@color/lightGreen"
-        android:text="Betal"
-        android:textSize="20sp"
+        android:layout_alignLeft="@+id/buttonTilbage"
+        android:layout_alignStart="@+id/buttonTilbage"
+        android:layout_below="@+id/ArbeigoHeader"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="39dp"
+        android:text="Firma:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:id="@+id/textviewFirma" />
+
+    <TextView
+        android:id="@+id/textViewFirma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textviewFirma"
+        android:layout_alignBottom="@+id/textviewFirma"
+        android:layout_toEndOf="@+id/textviewTelefon"
+        android:layout_toRightOf="@+id/textviewTelefon"
+        android:text="Firmanavn"
+        android:textColor="@color/grey"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textviewFirma"
+        android:layout_alignStart="@+id/textviewFirma"
+        android:layout_below="@+id/textviewFirma"
+        android:text="Håndværker:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:id="@+id/textviewHåndværker" />
+
+    <TextView
+        android:id="@+id/textViewHåndværker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewFirma"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/textviewHåndværker"
+        android:layout_toRightOf="@+id/textviewHåndværker"
+        android:text="Håndværkernavn"
+        android:textColor="@color/grey"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textviewHåndværker"
+        android:layout_alignStart="@+id/textviewHåndværker"
+        android:layout_below="@+id/textviewHåndværker"
+        android:text="Telefon:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:id="@+id/textviewTelefon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textviewHåndværker"
+        android:layout_toEndOf="@+id/buttonTilbage"
+        android:layout_toRightOf="@+id/buttonTilbage"
+        android:text="XX-XX-XX-XX"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        android:id="@+id/textViewTelefon" />
+
+    <TextView
+        android:id="@+id/textviewAdresse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textviewTelefon"
+        android:layout_alignStart="@+id/textviewTelefon"
+        android:layout_below="@+id/textviewTelefon"
+        android:text="Adresse:"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewTelefon"
+        android:layout_alignStart="@+id/textViewTelefon"
+        android:layout_below="@+id/textViewTelefon"
+        android:text="Ukendtvej 1"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        android:id="@+id/textViewAdresse"/>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignEnd="@+id/imageButton"
+        android:layout_alignRight="@+id/imageButton"
+        android:layout_below="@+id/ArbeigoHeader"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/constructionlogo"
+        android:id="@+id/imageView" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="230dp"
+        android:layout_height="200dp"
+        android:layout_alignLeft="@+id/textviewAdresse"
+        android:layout_alignStart="@+id/textviewAdresse"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/textviewTelefon"
+        android:layout_toRightOf="@+id/textviewTelefon"
+        android:text="Materialer"
+        android:textColor="@color/orange"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textviewKlar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="70dp"
+        android:layout_toEndOf="@+id/listView"
+        android:layout_toRightOf="@+id/listView"
+        android:text="Klar:"
+        android:textColor="@color/grey"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textviewKlar"
+        android:layout_alignBottom="@+id/textviewKlar"
+        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
+        android:layout_toEndOf="@+id/textviewKlar"
+        android:layout_toRightOf="@+id/textviewKlar"
+        android:text="Idag"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textviewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textviewKlar"
+        android:layout_alignStart="@+id/textviewKlar"
+        android:layout_below="@+id/textviewKlar"
+        android:layout_marginTop="15dp"
+        android:text="Status:"
+        android:textColor="@color/grey"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textviewFærdig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textviewStatus"
+        android:layout_alignBottom="@+id/textviewStatus"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/textviewStatus"
+        android:layout_toRightOf="@+id/textviewStatus"
+        android:text="Færdig"
+        android:textColor="@color/lightGreen"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewKroner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editTextMaterialer"
+        android:layout_alignEnd="@+id/opgaveNavn"
+        android:layout_alignRight="@+id/opgaveNavn"
+        android:layout_marginBottom="28dp"
+        android:text="487"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewKroner"
+        android:layout_alignBottom="@+id/textViewKroner"
+        android:layout_toEndOf="@+id/opgaveNavn"
+        android:layout_toRightOf="@+id/opgaveNavn"
+        android:text="kr"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <EditText
+        android:id="@+id/editTextMaterialer"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/listView"
+        android:layout_alignStart="@+id/listView"
+        android:layout_below="@+id/listView"
+        android:layout_marginTop="9dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:background="@color/orange"
+        android:text="Tilføj"
         android:textColor="@color/white"
+        android:id="@+id/TilføjMaterialer"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/payButton"
+        android:layout_alignBottom="@+id/payButton"
+        android:layout_alignLeft="@+id/editTextMaterialer"
+        android:layout_alignStart="@+id/editTextMaterialer" />
+
+
+    <Button
+        android:id="@+id/payButton"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_alignRight="@+id/textView"
+        android:layout_below="@+id/textViewKroner"
+        android:layout_marginTop="10dp"
+        android:background="@color/lightGreen"
         android:onClick="onClickBetal"
-        />
+        android:text="Betal:"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>
