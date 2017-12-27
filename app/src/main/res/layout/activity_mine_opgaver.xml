@@ -6,4 +6,37 @@
     android:layout_height="match_parent"
     tools:context="com.example.nicolai.arbeigobetalingsserivce.mineOpgaverActivity">
 
+    <ImageView
+        android:id="@+id/ArbeigoHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="119dp"
+        android:src="@drawable/headerarbeigo"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_below="@+id/ArbeigoHeader"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:text="Aktive Opgaver"
+        android:textColor="@android:color/black"
+        android:onClick="onClickIntent1"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:text="Gamle Opgaver"
+        android:textColor="@android:color/black"
+        android:onClick="onClickIntent2"/>
+
 </RelativeLayout>

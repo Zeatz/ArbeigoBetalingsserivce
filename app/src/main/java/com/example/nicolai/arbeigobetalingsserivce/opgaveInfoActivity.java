@@ -107,7 +107,7 @@ public class opgaveInfoActivity extends AppCompatActivity {
 
 
     public void onClickReturnToMineOpgaver(View view){
-        Intent intent = new Intent(opgaveInfoActivity.this, mineOpgaverActivity.class);
+        Intent intent = new Intent(opgaveInfoActivity.this, AktiveOpgaverActivity.class);
         startActivity(intent);
     }
 

@@ -17,17 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".mineOpgaverActivity" />
-        <activity android:name=".opretOpgaveActivity">
-        </activity>
-        <activity android:name=".opgaveInfoActivity">
+        <activity android:name=".MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mineOpgaverActivity">
+        </activity>
+        <activity android:name=".opretOpgaveActivity">
+        </activity>
+        <activity android:name=".opgaveInfoActivity" />
+        <activity android:name=".AktiveOpgaverActivity">
+        </activity>
+        <activity android:name=".GamleOpgaverActivity"></activity>
     </application>
 
 </manifest>
