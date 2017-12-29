@@ -229,7 +229,7 @@
         android:textColor="@color/lightGreen"
         android:textSize="20sp" />
 
-    <TextView
+        <EditText
         android:id="@+id/textViewKroner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -237,7 +237,7 @@
         android:layout_alignEnd="@+id/opgaveNavn"
         android:layout_alignRight="@+id/opgaveNavn"
         android:layout_marginBottom="28dp"
-        android:text="487"
+        android:inputType="number"
         android:textColor="@color/black"
         android:textSize="35sp" />
 

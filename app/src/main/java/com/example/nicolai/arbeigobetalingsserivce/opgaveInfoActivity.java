@@ -31,7 +31,7 @@ public class opgaveInfoActivity extends AppCompatActivity {
 
     //Android Layout
     Button btnTilføj;
-    EditText editTextMaterialer;
+    EditText editTextMaterialer, getEditTextKroner;
     ListView listView;
     TextView opgaveNavn;
 
@@ -53,6 +53,7 @@ public class opgaveInfoActivity extends AppCompatActivity {
 
         MobilePay.getInstance().init("APPDK0000000000", Country.DENMARK);
 
+        getEditTextKroner = (EditText) findViewById(R.id.textViewKroner);
         opgaveNavn = (TextView) findViewById(R.id.opgaveNavn);
         opgaveNavn.setTypeface(Typeface.SANS_SERIF);
         btnTilføj = (Button) findViewById(R.id.TilføjMaterialer);
@@ -112,6 +113,8 @@ public class opgaveInfoActivity extends AppCompatActivity {
     }
 
     public void onClickBetal(View view){
+        String no = getEditTextKroner.getText().toString();
+        int kronerView = Integer.parseInt(no);
 
         // Checker hvis mobilePay er installeret på enheden
         boolean isMobilePayInstalled = MobilePay.getInstance().isMobilePayInstalled(getApplicationContext());
@@ -119,7 +122,7 @@ public class opgaveInfoActivity extends AppCompatActivity {
         if (isMobilePayInstalled) {
             // MobilePay er på systemet, lav et betalingsobject.
             Payment payment = new Payment();
-            payment.setProductPrice(new BigDecimal(10.0));
+            payment.setProductPrice(new BigDecimal(kronerView));
             payment.setOrderId("86715c57-8840-4a6f-af5f-07ee89107ece");
 
             // Laver betalings Intent, ved at bruge objectet lavet ovenover.
