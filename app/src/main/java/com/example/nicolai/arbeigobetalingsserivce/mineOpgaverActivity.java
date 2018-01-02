@@ -22,4 +22,9 @@ public class mineOpgaverActivity extends AppCompatActivity {
         Intent intent = new Intent(mineOpgaverActivity.this, GamleOpgaverActivity.class);
         startActivity(intent);
     }
+
+    public void onClickIntent3(View view) {
+        Intent intent = new Intent(mineOpgaverActivity.this, opretOpgaveActivity.class);
+        startActivity(intent);
+    }
 }

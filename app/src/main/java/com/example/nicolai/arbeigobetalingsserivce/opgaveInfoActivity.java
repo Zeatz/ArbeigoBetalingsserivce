@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +23,10 @@ import java.util.ArrayList;
 
 import dk.danskebank.mobilepay.sdk.Country;
 import dk.danskebank.mobilepay.sdk.MobilePay;
+import dk.danskebank.mobilepay.sdk.ResultCallback;
+import dk.danskebank.mobilepay.sdk.model.FailureResult;
 import dk.danskebank.mobilepay.sdk.model.Payment;
+import dk.danskebank.mobilepay.sdk.model.SuccessResult;
 
 public class opgaveInfoActivity extends AppCompatActivity {
 
@@ -67,7 +71,10 @@ public class opgaveInfoActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 mDatabase.push().setValue(editTextMaterialer.getText().toString().trim());
+
+                Toast.makeText(getApplicationContext(), "Materiale Tilføjet", Toast.LENGTH_LONG).show();
             }
+
         });
 
         mDatabase.addChildEventListener(new ChildEventListener() {
@@ -79,6 +86,7 @@ public class opgaveInfoActivity extends AppCompatActivity {
                 arrayList.add(string);
 
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -137,25 +145,26 @@ public class opgaveInfoActivity extends AppCompatActivity {
         }
     }
 
-    //  @Override
-    // public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    //   super.onActivityResult(requestCode, resultCode, data);
-    // if (requestCode == MOBILEPAY_PAYMENT_REQUEST_CODE) {
-    // The request code matches our MobilePay Intent
-    //   MobilePay.getInstance().handleResult(resultCode, data, new ResultCallback() {
-    //     @Override
-    //   public void onSuccess(SuccessResult result) {
-    // The payment succeeded - you can deliver the product.
-    // }
-    //@Override
-    //public void onFailure(FailureResult result) {
-    // The payment failed - show an appropriate error message to the user. Consult the MobilePay class documentation for possible error codes.
-    //}
-    //@Override
-    //public void onCancel() {
-    // The payment was cancelled.
-    // }
-    //});
-    //  }
-    //}
+      @Override
+     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+       super.onActivityResult(requestCode, resultCode, data);
+     if (requestCode == MOBILEPAY_PAYMENT_REQUEST_CODE) {
+     //The request code matches our MobilePay Intent
+       MobilePay.getInstance().handleResult(resultCode, data, new ResultCallback() {
+         @Override
+         public void onSuccess(SuccessResult result) {
+     //The payment succeeded - you can deliver the product.
+     }
+    @Override
+    public void onFailure(FailureResult result) {
+     //The payment failed - show an appropriate error message to the user. Consult the MobilePay class documentation for possible error codes.
+
+    }
+    @Override
+    public void onCancel() {
+     //The payment was cancelled.
+     }
+    });
+      }
+    }
 }

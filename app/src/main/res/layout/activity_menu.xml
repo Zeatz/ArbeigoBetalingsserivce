@@ -84,7 +84,7 @@
         android:layout_alignStart="@+id/button1"
         android:layout_alignTop="@+id/MineOpgaver"
         android:background="@color/white"
-        android:text="Mine Opgaver"
+        android:text="Opgaver"
         android:textColor="@android:color/black"
         android:onClick="onClickMineOpgaver"/>
 

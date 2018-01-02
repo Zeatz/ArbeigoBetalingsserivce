@@ -38,7 +38,7 @@ public class AktiveOpgaverActivity extends AppCompatActivity {
                 new Product(
                         1,
                         "Vindueskift",
-                        "Førdig d. 30-02-2018",
+                        "Færdig d. 30-02-2018",
                         4,
                         445,
                         R.drawable.vindueskift));
@@ -47,7 +47,7 @@ public class AktiveOpgaverActivity extends AppCompatActivity {
                 new Product(
                         2,
                         "Vindueskift",
-                        "Førdig d. 30-02-2018",
+                        "Færdig d. 30-02-2018",
                         5,
                         468,
                         R.drawable.vindueskift));
@@ -56,7 +56,7 @@ public class AktiveOpgaverActivity extends AppCompatActivity {
                 new Product(
                         3,
                         "Vindueskift",
-                        "Førdig d. 30-02-2018",
+                        "Færdig d. 30-02-2018",
                         3,
                         487,
                         R.drawable.vindueskift));

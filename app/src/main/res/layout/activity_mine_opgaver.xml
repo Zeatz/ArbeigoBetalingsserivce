@@ -38,5 +38,17 @@
         android:text="Gamle Opgaver"
         android:textColor="@android:color/black"
         android:onClick="onClickIntent2"/>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:text="Opret Opgaver"
+        android:textColor="@android:color/black"
+        android:onClick="onClickIntent3"/>
+
 
 </RelativeLayout>
