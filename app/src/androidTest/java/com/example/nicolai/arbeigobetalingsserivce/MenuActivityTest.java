@@ -14,8 +14,11 @@ import static org.junit.Assert.*;
  * Created by Nicolai on 03-01-2018.
  */
 public class MenuActivityTest {
+
     @Rule
-    public ActivityTestRule<MenuActivity> menuActivityActivityTestRule = new ActivityTestRule<MenuActivity>(MenuActivity.class);
+    public ActivityTestRule<MenuActivity> menuActivityActivityTestRule =
+            new ActivityTestRule<MenuActivity>(MenuActivity.class);
+
     private MenuActivity mActivity = null;
 
     @Before
